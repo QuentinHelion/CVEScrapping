@@ -1,16 +1,14 @@
 from Class import *
 from Interfaces import *
-
+#CVE-2022-23943
 
 def main():
     print("Starting...")
-    scraper = CVEScraper()
-    # results = scraper.search("apache2")
-    # for result in results:
-        # print(result)
-
-    details = scraper.details("CVE-2022-23943")
-    print(details)
+    
+    stdscr = curses.initscr()
+    mainMenu(stdscr)
+    
+    print("Loading...")
 
     print("ending...")
 
