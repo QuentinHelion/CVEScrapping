@@ -4,20 +4,11 @@ from Interfaces import *
 
 def main():
     print("Starting...")
-    scraper = CVEScraper()
-    cve = CVE()
-    # results = scraper.search("apache2")
-    # for result in results:
-        # print(result)
+    
     stdscr = curses.initscr()
-    userInput= mainMenu(stdscr)
+    mainMenu(stdscr)
+    
     print("Loading...")
-    details = scraper.details(userInput)
-    #write to txt file
-    cve.writeDetails(userInput,details)
-    data = list(details.items())
-    print(data)
-    createWin(stdscr,data)
 
     print("ending...")
 
