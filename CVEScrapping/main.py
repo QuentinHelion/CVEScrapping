@@ -1,8 +1,6 @@
 from Class import *
 from Interfaces import *
 #CVE-2022-23943
-def returnFromCurses(value):
-    return value
 
 def main():
     print("Starting...")
