@@ -6,26 +6,29 @@ class CVEScraper:
         self.base_url = "https://www.cvedetails.com"
 
     def search(self, query):
-        url = self.base_url + "/vulnerability-search.php?f=1&keywords=" + query
+        url = self.base_url + "/vulnerability-search.php?f=1&product=" + query
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
 
         results_table = soup.find('table', {'class': 'searchresults'})
+        print(results_table)
         if not results_table:
+            print("error1")
             return []
 
         results = []
-        ID_CELLS = 1
-        SEVERITY_CELLS = 7
-        PLUBLISHED_CELLS = 5
+        ID_CELLS = 3
+        SEVERITY_CELLS = 9
+        PLUBLISHED_CELLS = 7
 
         for row in results_table.find_all(name='tr', class_='srrowns'):
             cells = row.find_all('td')
 
-            if len(cells) != 15:
+            if len(cells) != 17:
+                print(len(cells))
                 continue
             cve_id = cells[ID_CELLS].find('a').text.strip()
-            severity = cells[SEVERITY_CELLS].find('div').text.strip()
+            severity = cells[SEVERITY_CELLS].text.strip()
             published_date = cells[PLUBLISHED_CELLS].text.strip()
             results.append({
                 'cve_id': cve_id,

@@ -1,0 +1,6 @@
+cve_id: CVE-2013-1048
+severity: 4.6
+published_date: 2013-03-06
+cve_id: CVE-2012-0216
+severity: 4.4
+published_date: 2012-04-22

@@ -22,9 +22,13 @@ def detailsWin(stdscr,str,max_height,max_width):
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
     detmenu_win.box()
     detmenu_win.bkgd(0, curses.color_pair(1))
-
+    # Get data
     details = scraper.details(str)
-    cve.writeDetails(str,details)
+    # Write to TXT file
+    cve.writeDetailstxt(str,details)
+    # Write to JSON file
+    cve.writeDetailsjson(str,details)
+    # Print on screen result
     details = list(details.items())
     detmenu_win.addstr(1,2,"DETAILS :      (Press Enter to exit)")
     addstrToWin(detmenu_win,details)
