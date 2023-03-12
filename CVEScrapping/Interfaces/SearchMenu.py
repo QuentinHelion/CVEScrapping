@@ -23,7 +23,7 @@ def createSearchWin(stdscr,max_height,max_width):
     ## Get user input
     userInput = searchenu_win.getstr().decode()
     results = scraper.search(userInput)
-    cve.writeSearch(userInput,str(results))
+    cve.writeSearchtxt(userInput,str(results))
     ## Hide user clicked buttons
     searchenu_win.erase()
     searchenu_win.refresh()
