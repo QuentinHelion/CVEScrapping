@@ -22,4 +22,11 @@ class CVE:
         output = self.searchTXTPath + name + '.txt'
         with open(output,'w') as txt:
             for item in data:
+                for key, value in item.items():
+                    txt.write(f'{key}: {value}\n')
+    
+    def writeSearchjson(self,name,data):
+        output = self.searchJSONPath + name + '.json'
+        with open(output,'w') as txt:
+            for item in data:
                 txt.write(item)
